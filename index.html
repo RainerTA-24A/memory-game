@@ -1,17 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <title>Memory Game</title>
-  <link rel="stylesheet" href="style.css"></link>
-  <script src="app.js" charset="utf-8"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Bistro Memory</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section
+        id="start-screen"
+        class="screen is-active"
+        aria-label="Start game screen"
+      >
+        <div class="hero-card">
+          <p class="hero-kicker">Michaelaro Jackson</p>
+          <h1>Memory Raid</h1>
+          <p class="hero-text">
+            Pair all food relics, unlock achievements, and master different challenge modes.
+          </p>
 
-  <h3>Score:<span id="result"></span></h3>
+          <form id="start-form" class="start-form">
+            <label for="player-name">Pilot Name</label>
+            <input
+              id="player-name"
+              name="player-name"
+              type="text"
+              maxlength="16"
+              placeholder="Enter your name"
+              required
+            />
 
-  <div class="grid">
-  </div>
+            <label for="game-mode">Mode</label>
+            <select id="game-mode" name="game-mode">
+              <option value="campaign">Campaign</option>
+              <option value="time-attack">Time Attack</option>
+              <option value="endless">Endless</option>
+              <option value="daily">Daily Challenge</option>
+            </select>
 
-</body>
+            <button id="play-btn" type="submit">Start New Game</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="game-screen" class="screen" aria-label="Game screen">
+        <header class="hud">
+          <div>
+            <p class="hud-kicker">Active Pilot</p>
+            <h2 id="hud-player" class="hud-player">Player</h2>
+          </div>
+          <div class="hud-chips">
+            <span class="chip">Level: <strong id="hud-level">1</strong></span>
+            <span class="chip"
+              >Time: <strong id="hud-timer">00:00</strong></span
+            >
+            <span class="chip"
+              >Mode: <strong id="hud-turn">Campaign</strong></span
+            >
+          </div>
+          <button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="true" aria-label="Toggle audio">
+            🔊
+          </button>
+        </header>
+
+        <section class="game-layout">
+          <aside class="sidebar-panel" aria-label="Score and achievements">
+            <div class="score-box">
+              <h3>Scoreboard</h3>
+              <p id="score-a">Score: <span>0</span></p>
+              <p id="best-streak">Best streak: <span>0</span></p>
+              <p>Total pairs found: <span id="result">0</span></p>
+            </div>
+
+            <div class="achievement-box">
+              <h3>Achievements</h3>
+              <ul id="achievement-list"></ul>
+            </div>
+
+            <div class="action-box">
+              <button id="restart-level-btn" type="button">
+                Restart Level
+              </button>
+              <button id="quit-btn" type="button">Quit Run</button>
+            </div>
+          </aside>
+
+          <section class="board-panel" aria-label="Memory board">
+            <div class="grid" id="memory-grid"></div>
+            <p id="status-text" class="status-text">
+              Find all pairs to clear the level.
+            </p>
+          </section>
+        </section>
+      </section>
+
+      <section id="end-screen" class="screen" aria-label="Game over screen">
+        <div class="end-card">
+          <p class="hero-kicker">Run Complete</p>
+          <h2 id="final-title">Game Over</h2>
+          <p id="final-summary">Summary appears here.</p>
+          <div id="final-achievements" class="final-achievements"></div>
+          <button id="play-again-btn" type="button">Play Again</button>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

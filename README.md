@@ -1,38 +1,86 @@
-# Memory Game
-A retro grid-based game in vanilla JavaScript, HTML and CSS
+# Memory Raid
 
-View the full walkthrough [here](https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw) 
+A stylized vanilla JavaScript memory game with a neon arcade theme, multiple modes, achievements, sound effects, and a full start-to-finish game flow.
 
-Memory Game, also known as the Concentration card game or Matching Game, is a simple card game where you need to match pairs by turn over 2 cards at a time. There are so many versions of it it is hard to in down it's exact origin. There are claims that the famuos writer of Huckleberry Finn, Mark Twain invented his own version. I googled it and whatever it is, it looks more like a way of trying to figure out how much tax you owe rather than match cards.
+## Features
 
-In this repo, I will be putting extra focus on setting Attributes in JavaScript. If you want to learn how to use setAttritube and getAttribute effectively, please have a look at my code.
+- Start screen with player name entry
+- Four game modes
+  - Campaign
+  - Time Attack
+  - Endless
+  - Daily Challenge
+- Visible score, level, best streak, and timer
+- Achievement system
+- Restart level button
+- Quit run button
+- Audio toggle with background music and sound effects
+- Game over / run complete screen
 
-I have kept the styling at a bare miniumum for you to go wild and make it your own. Please tag me as I would LOVE to see your game!!!
+## How to play
 
-## What inbuilt functions are we going to focus on?
-- for loops
-- addEventListener
-- setAttribute
-- getAttribute
-- data-name
-- document.querySelector
-- createElement
+1. Enter a player name on the start screen.
+2. Choose a mode.
+3. Click Start New Game.
+4. Flip two cards at a time and try to find matching pairs.
+5. Matching cards stay revealed and count toward your score.
+6. Wrong matches flip back after a short delay.
+7. Clear the current round or level before time runs out, depending on the mode.
 
-## Rules of Memory Game
-- You will start by flipping over one card
-- If the next card you flip matches, a pop up alert notifies you and you get +1 to your score
-- These cards then disspear
-- If the next card you flip does not match, a pop up alert notifies you of ths and the cards flip back
-- The game continues until you match all the cards on the board
+## Game modes
 
-### MIT Licence
+### Campaign
 
-Copyright (c) 2020 Ania Kubow
+- Classic progression mode.
+- Starts with fewer pairs and becomes harder over time.
+- Each new level adds more pairs and increases pressure.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+### Time Attack
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+- Shared timer challenge.
+- Clear waves as fast as possible.
+- The timer keeps pressure on the entire run.
 
-*Translation: Ofcourse you can use this for you project! Just make sure to say where you got this from :)
+### Endless
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+- No fixed end point.
+- Keep clearing stage after stage.
+- Good for score chasing.
+
+### Daily Challenge
+
+- Fixed daily board and timer setup.
+- Same challenge for everyone on the same day.
+
+## Controls
+
+- Mouse or touch: flip cards
+- Restart Level: resets the current round
+- Quit Run: ends the current run
+- Audio button: toggles music and effects
+
+## Audio
+
+The game uses the files in the `audio/` folder:
+
+- `background.mp3` for the looping background track
+- `cardFlip.mp3` for card reveal sound
+- `gameOver.wav` for the end-of-run sound
+
+## Project structure
+
+- `index.html` - game layout and screens
+- `style.css` - full visual theme and layout
+- `app.js` - game logic
+- `images/` - card artwork
+- `audio/` - music and sound effects
+
+## Credit
+
+This project started from the original Memory Game idea by Ania Kubow and was expanded into a custom neon arcade version with new modes, UI, and audio.
+
+## License
+
+MIT License
+
+Original code base credit: Ania Kubow

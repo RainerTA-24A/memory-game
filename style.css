@@ -86,6 +86,17 @@ body {
   gap: 10px;
 }
 
+.mode-help {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(246, 255, 244, 0.92);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
 .start-form label {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -267,13 +278,63 @@ body {
 
 .board-panel {
   padding: 16px;
+  position: relative;
+}
+
+.round-brief {
+  border: 1px solid rgba(114, 246, 200, 0.38);
+  background: rgba(114, 246, 200, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  color: rgba(246, 255, 244, 0.95);
+  min-height: 2.8em;
+  line-height: 1.35;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 92px);
+  --grid-cols: 4;
+  grid-template-columns: repeat(var(--grid-cols), 92px);
   justify-content: center;
   gap: 12px;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.grid.is-jammed {
+  animation: board-jam 500ms ease;
+}
+
+.grid.is-rotating {
+  transform: rotate(90deg);
+}
+
+.grid.is-frozen {
+  filter: grayscale(0.55) brightness(0.85);
+}
+
+.board-panel.is-blackout::before {
+  content: "DISTRACTOR PULSE";
+  position: absolute;
+  inset: 12px;
+  border-radius: 12px;
+  background: rgba(3, 8, 12, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  letter-spacing: 0.11em;
+  font-weight: 800;
+  color: rgba(246, 255, 244, 0.92);
+  z-index: 5;
+}
+
+@keyframes board-jam {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
 }
 
 .card {
@@ -316,11 +377,13 @@ body {
 }
 
 .card.revealed img,
+.card.masked img,
 .card.matched img {
   opacity: 1;
 }
 
 .card.revealed::after,
+.card.masked::after,
 .card.matched::after {
   opacity: 0;
 }
@@ -329,6 +392,11 @@ body {
   border-color: #78ffa8;
   box-shadow: 0 0 0 2px rgba(120, 255, 168, 0.3), 0 8px 16px rgba(0, 0, 0, 0.24);
   cursor: default;
+}
+
+.card.wrong-guess {
+  border-color: #ff5f7a;
+  box-shadow: 0 0 0 2px rgba(255, 95, 122, 0.45), 0 8px 16px rgba(0, 0, 0, 0.24);
 }
 
 .status-text {
@@ -366,7 +434,7 @@ body {
   }
 
   .grid {
-    grid-template-columns: repeat(4, minmax(68px, 86px));
+    grid-template-columns: repeat(var(--grid-cols), minmax(68px, 86px));
   }
 
   .card {

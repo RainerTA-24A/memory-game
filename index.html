@@ -37,8 +37,17 @@
               <option value="campaign">Campaign</option>
               <option value="time-attack">Time Attack</option>
               <option value="endless">Endless</option>
-              <option value="daily">Daily Challenge</option>
+              <option value="distractor">Distractor Mode</option>
+              <option value="target-recall">Target Recall</option>
+              <option value="afterimage">Afterimage Lab</option>
+              <option value="memory-lock">Memory Lock</option>
+              <option value="limited-moves">Limited Moves</option>
+              <option value="neuro-raid">Neuro Raid</option>
             </select>
+
+            <p id="mode-help" class="mode-help">
+              Campaign trains memory consistency and progressive load.
+            </p>
 
             <button id="play-btn" type="submit">Start New Game</button>
           </form>
@@ -57,7 +66,16 @@
               >Time: <strong id="hud-timer">00:00</strong></span
             >
             <span class="chip"
+              >Moves: <strong id="hud-moves">--</strong></span
+            >
+            <span class="chip"
               >Mode: <strong id="hud-turn">Campaign</strong></span
+            >
+            <span class="chip"
+              >Focus: <strong id="hud-focus">Memory</strong></span
+            >
+            <span class="chip"
+              >Rule: <strong id="hud-rule">None</strong></span
             >
           </div>
           <button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="true" aria-label="Toggle audio">
@@ -71,6 +89,8 @@
               <h3>Scoreboard</h3>
               <p id="score-a">Score: <span>0</span></p>
               <p id="best-streak">Best streak: <span>0</span></p>
+              <p id="avg-decision">Avg decision: <span>0.00s</span></p>
+              <p id="recovery-speed">Recovery speed: <span>0.00s</span></p>
               <p>Total pairs found: <span id="result">0</span></p>
             </div>
 
@@ -88,8 +108,9 @@
           </aside>
 
           <section class="board-panel" aria-label="Memory board">
+            <div id="round-brief" class="round-brief" aria-live="polite"></div>
             <div class="grid" id="memory-grid"></div>
-            <p id="status-text" class="status-text">
+            <p id="status-text" class="status-text" aria-live="polite">
               Find all pairs to clear the level.
             </p>
           </section>

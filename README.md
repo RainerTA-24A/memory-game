@@ -9,13 +9,22 @@ A stylized vanilla JavaScript memory game with a neon arcade theme, multiple mod
   - Campaign
   - Time Attack
   - Endless
-  - Daily Challenge
+  - Distractor Mode
+- Five advanced training modes
+  - Target Recall
+  - Afterimage Lab
+  - Memory Lock
+  - Limited Moves
+  - Neuro Raid
 - Visible score, level, best streak, and timer
+- Visible moves counter, training focus, decision speed, and recovery speed
 - Achievement system
 - Restart level button
 - Quit run button
 - Audio toggle with background music and sound effects
 - Game over / run complete screen
+- Round briefing and run-end learning insights
+- Random event rules that can alter round difficulty
 
 ## How to play
 
@@ -47,14 +56,53 @@ A stylized vanilla JavaScript memory game with a neon arcade theme, multiple mod
 - Keep clearing stage after stage.
 - Good for score chasing.
 
-### Daily Challenge
+### Distractor Mode
 
-- Fixed daily board and timer setup.
-- Same challenge for everyone on the same day.
+- Timed memory challenge with periodic blackout pulses.
+- Trains attention control and recovery after interruptions.
+
+### Target Recall
+
+- Level-based position memory challenge inspired by enchanting minigames.
+- Starts with 20 cards and 3 highlighted targets on level 1.
+- Every new level adds +1 target card to memorize.
+- On level 20 the board expands to 30 cards.
+- Max level is 30; one wrong tile ends the run.
+
+### Afterimage Lab
+
+- At round start, card faces are shown briefly for preview.
+- After preview, every card is masked to a generic image (correct.png), including when clicked.
+- You must remember what was shown even after visual identity disappears.
+- Includes signal checks (Space key) to train inhibition and reaction control.
+
+### Memory Lock
+
+- Clicking a card shows the original image once.
+- After 1.5 seconds, that card is permanently masked to correct.png for the rest of the round.
+- Clicking that same card again shows correct.png, never the original image again.
+- Uses pair matching flow, but with permanent per-card masking pressure.
+
+### Limited Moves
+
+- Strategy mode with move budget instead of timer.
+- Teaches planning and efficient decision making.
+
+### Neuro Raid
+
+- Extreme pressure mode with one shared run timer.
+- Periodic visual jam and board scramble events.
+- Misses reduce timer and long hesitation breaks combo momentum.
+
+### Event Rules
+
+- Some rounds roll an active rule (for example Freeze Pulse, Panic Tax, or Fragile Combo).
+- In April, a seasonal Easter Shuffle rule may appear and reshuffle unmatched cards mid-round.
 
 ## Controls
 
 - Mouse or touch: flip cards
+- Keyboard: press Space during signal checks in Afterimage Lab
 - Restart Level: resets the current round
 - Quit Run: ends the current run
 - Audio button: toggles music and effects
